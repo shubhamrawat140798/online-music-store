@@ -1,0 +1,50 @@
+create table Client_Master( 
+client_no Varchar2(5) Primary key  check (client_no like 'C%' and length(client_no) < 6),  
+Cname varchar2(25) not null,  
+PhoneNo number(11) check (length(PhoneNo)<11));
+
+insert into Client_Master values('C1001','Kishore',9876564511);
+insert into Client_Master values('C1002','Nand',9876124511);
+insert into Client_Master values('C1003','Kamal',9346564511);
+insert into Client_Master values('C1004','Raju',9823564511);
+insert into Client_Master values('C1005','Diksha',2376564511);
+
+
+create table Product_Master(product_no varchar2(5) primary key check(product_no like 'P%' and length(product_no) < 6) , 
+description varchar2(25) not null, profit_percent number(11), unit_measure varchar2(10), qty_on_hand number(3), 
+recorder_lvl number(3),sell_price number(3), cost_price number(3));
+
+insert into Product_Master values ('P1001','Diet Coke Soft Drink',75,'Dozen',300,50,350,200);
+insert into Product_Master values ('P1002','Pepsi',119,'Dozen',200,50,350,160);
+insert into Product_Master values ('P1003','Limonata - Limey Minty Co',56,'Dozen',49,50,350,225);
+insert into Product_Master values ('P1004','Thums Up',119,'Dozen',200,50,350 ,160);
+insert into Product_Master values ('P1005','Instant Ice Tea Mix-Lemo',40,'Dozen',300,50,350,250);
+
+create table Salesman_Master(salesman_no varchar2(5) primary key check (salesman_no like 'S%' and length(salesman_no)<6), 
+salesman_name varchar2(25) not null, sal_amt number(11),tgt_to_get number(3), ytd_sales number(3));
+
+insert into Salesman_Master values('S0001', 'Sameer',4000, 300, 400);
+insert into Salesman_Master values('S0002', 'Sumit', 4000, 300, 500);
+insert into Salesman_Master values('S0003', 'Ashu',  4000, 300, 450);
+insert into Salesman_Master values('S0004', 'Ashok', 4000, 300, 275);
+
+create table Sales_Order  
+(  
+s_order_no varchar2(5) check ( s_order_no like 'O%'and length(s_order_no) < 6 )  primary key,  
+s_order_date Date not null,  
+client_no varchar2(5), 
+salesman_no varchar2(5), 
+order_status varchar2(15) check ( order_status in('Delivered','Pending','Cancelled')), 
+qty number(3),   
+foreign key(client_no) references Client_Master(client_no),  
+foreign key (salesman_no)references Salesman_Master(salesman_no),  
+product_no varchar2(5),  
+foreign key(product_no)references Product_Master(product_no)  
+);
+
+insert into Sales_Order values('O0001',TO_DATE('13/1/2021', 'DD/MM/YYYY'),'C1003','S0001','Delivered',10,'P1001');
+insert into Sales_Order values('O0002',TO_DATE('15/1/2021', 'DD/MM/YYYY'),'C1002','S0001','Delivered',20,'P1004');
+insert into Sales_Order values('O0003',TO_DATE('22/2/2021', 'DD/MM/YYYY'),'C1005','S0003','Delivered',30,'P1002');
+insert into Sales_Order values('O0004',TO_DATE('21/1/2021', 'DD/MM/YYYY'),'C1003','S0002','Pending',20,'P1002');
+insert into Sales_Order values('O0005',TO_DATE('20/2/2021', 'DD/MM/YYYY'),'C1005','S0003','Pending',25,'P1001');
+

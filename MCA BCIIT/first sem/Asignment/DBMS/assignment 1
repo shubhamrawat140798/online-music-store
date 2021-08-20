@@ -1,0 +1,62 @@
+Create table Student(
+        SNo number(4) not null unique,
+        AppRegNo Varchar2(9) not null unique, 
+        RollNo number(11) primary key,
+        Sname varchar2(50) not null,
+        Gender varchar2(7) not null check (Gender in ( 'MALE','FEMALE','Male','Female')),
+        Catergory varchar(4) not null check (Catergory in ('UR','ST','SC','OBC')),
+        Pwd varchar2(3) not null check (Pwd in('Yes','Y','No','N')),
+        DOB date not null,
+        ProgName varchar2(3) DEFAULT 'MCA' check (ProgName in ('MCA','BCA','MBA','BBA')),
+        PrgCode number(3) DEFAULT  105 check (PrgCode in (105,104,103,102 )),
+        Marks_Obtained number(3) check (Marks_Obtained >= 0 and Marks_Obtained <=400),
+        Merit_Order number(3) not null unique,
+        PassingState varchar2(20) not null  DEFAULT 'Delhi'
+    );
+--	INSERTION
+insert into Student(SNo,AppRegNo,RollNo,Sname,Gender,Catergory,Pwd,DOB,Marks_Obtained,Merit_Order,PassingState)
+values(1,'IPU209747',11105120198,'PARAG DUDEJA','Male','UR','No',TO_DATE('19/7/1999', 'DD/MM/YYYY'),330,1,'Delhi');
+
+insert into Student(SNo,AppRegNo,RollNo,Sname,Gender,Catergory,Pwd,DOB,Marks_Obtained,Merit_Order,PassingState)
+values(2,'IPU087941',11105180092,'VIPIN KUMAR MALIK','Male','UR','No',TO_DATE('22/1/1999', 'DD/MM/YYYY'),302,2,'Delhi');
+
+insert into Student(SNo,AppRegNo,RollNo,Sname,Gender,Catergory,Pwd,DOB,Marks_Obtained,Merit_Order,PassingState)
+values(3,'IPU144573',11105130138,'RAMAN MITTAL','Male','UR','No',TO_DATE('21/6/1999', 'DD/MM/YYYY'),302,3,'Delhi');
+
+insert into Student(SNo,AppRegNo,RollNo,Sname,Gender,Catergory,Pwd,DOB,Marks_Obtained,Merit_Order,PassingState)
+values(4,'IPU142819',11105150119,'ARMAAN SAINI','Male','UR','No',TO_DATE('19/7/1998', 'DD/MM/YYYY'),301,4,'Delhi');
+
+
+insert into Student(SNo,AppRegNo,RollNo,Sname,Gender,Catergory,Pwd,DOB,Marks_Obtained,Merit_Order,PassingState)
+values(5,'IPU066878',11105160123,'MANISH BISHT','Male','UR','No',TO_DATE('28/12/1999', 'DD/MM/YYYY'),301,5,'Delhi');
+
+insert into Student(SNo,AppRegNo,RollNo,Sname,Gender,Catergory,Pwd,DOB,Marks_Obtained,Merit_Order,PassingState)
+values(6,'IPU080102',11105130084,'SHIVANG TRIPATHI','Male','UR','No',TO_DATE('19/8/1999', 'DD/MM/YYYY'),298,6,'Delhi');
+
+insert into Student(SNo,AppRegNo,RollNo,Sname,Gender,Catergory,Pwd,DOB,Marks_Obtained,Merit_Order,PassingState)
+values(7,'IPU121195',11105160255,'MAYANK DUA','Male','UR','No',TO_DATE('2/2/1999', 'DD/MM/YYYY'),297,7,'Delhi');
+
+insert into Student(SNo,AppRegNo,RollNo,Sname,Gender,Catergory,Pwd,DOB,Marks_Obtained,Merit_Order,PassingState)
+values(8,'IPU245999',11105180229,'MANAN AGGARWAL','Male','UR','No',TO_DATE('29/9/1998', 'DD/MM/YYYY'),296,8,'Delhi');
+
+insert into Student(SNo,AppRegNo,RollNo,Sname,Gender,Catergory,Pwd,DOB,Marks_Obtained,Merit_Order,PassingState)
+values(9,'IPU092385',11105170105,'ROOHI SHARMA','Female','UR','No',TO_DATE('25/12/1998', 'DD/MM/YYYY'),295,9,'Delhi');
+
+insert into Student(SNo,AppRegNo,RollNo,Sname,Gender,Catergory,Pwd,DOB,Marks_Obtained,Merit_Order,PassingState)
+values(10,'IPU252029',11105160451,'NEHA JAIN','Female','UR','No',TO_DATE('20/9/1999', 'DD/MM/YYYY'),294,10,'Delhi');
+
+insert into Student(SNo,AppRegNo,RollNo,Sname,Gender,Catergory,Pwd,DOB,Marks_Obtained,Merit_Order,PassingState)
+values(11,'IPU081041',11105180081,'NEHA THAKRAN','Female','UR','No',TO_DATE('9/6/1998', 'DD/MM/YYYY'),290,11,'Delhi');
+
+insert into Student(SNo,AppRegNo,RollNo,Sname,Gender,Catergory,Pwd,DOB,Marks_Obtained,Merit_Order,PassingState)
+values(12,'IPU029998',11105150019,'AASTHA GUPTA','Female','UR','No',TO_DATE('2/2/2000', 'DD/MM/YYYY'),278,12,'Delhi');
+
+insert into Student(SNo,AppRegNo,RollNo,Sname,Gender,Catergory,Pwd,DOB,Marks_Obtained,Merit_Order,PassingState)
+values(13,'IPU001192',11105180001,'KRITI KAPOOR','Female','UR','No',TO_DATE('04/9/1999', 'DD/MM/YYYY'),277,13,'Delhi');
+
+insert into Student(SNo,AppRegNo,RollNo,Sname,Gender,Catergory,Pwd,DOB,Marks_Obtained,Merit_Order,PassingState)
+values(14,'IPU078054',11105110009,'UMESH SONI','Male','OBC','No',TO_DATE('16/7/2000', 'DD/MM/YYYY'),277,14,'Delhi');
+
+insert into Student(SNo,AppRegNo,RollNo,Sname,Gender,Catergory,Pwd,DOB,Marks_Obtained,Merit_Order,PassingState)
+values(15,'IPU168089',11105160331,'AMAN RAJ','Male','UR','No',TO_DATE('30/9/1998', 'DD/MM/YYYY'),276,15,'Delhi');
+
